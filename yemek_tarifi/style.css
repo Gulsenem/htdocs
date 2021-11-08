@@ -1,0 +1,123 @@
+*{
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+:root
+{
+    --primary: rgb(253, 166, 4);
+    --secondary: rgb(247, 234, 211);
+    --accent:   rgb(253, 120, 4);
+
+}
+body
+{
+    margin:0;
+}
+
+.wrapper
+{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.flex
+{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ h1
+{
+    font-size: 3em;
+}
+section .wrapper
+{
+    padding: 70px 0;
+    text-align: center;
+}
+
+a
+{
+    color:rgb(22, 22, 22);
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+
+input
+{
+    border:none;
+    outline:none;
+    padding: 8px 16px;
+    border-radius: 6px;
+}
+/***************HEADER**************/
+header
+{
+    background-color: var(--primary);
+    padding: 30px 0;
+}
+header .logo
+{
+    font-size: 1.6em;
+    font-family: fantasy;
+}
+header nav a
+{
+    margin-left: 10px;
+}
+/***********MAIN*******************/
+/***********Sec_Slider*************/
+.sec_slider
+{
+    height: 700px;
+    background-image: url("bild/woman.jpg");
+
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+/***********Sec_uberUns*************/
+
+.sec_uberUns .wrapper p
+{
+    padding: 30px 0;
+    border-top: 1px solid var(--secondary);
+    border-bottom: 1px solid var(--secondary);
+    line-height: 1.6;
+}
+.sec_uberUns .wrapper span
+{
+    border-bottom: 2px solid var(--accent);
+}
+/***********Sec_rezept*************/
+.container
+{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.card
+{
+    width: 300px;
+    
+}
+.card .card_img img
+{
+    width: 300px;
+    height: 200px;
+}
+.card_bottom
+{
+    padding: 20px;
+}
+.stars
+{
+    color:var(--secondary);
+}
+.arbeitZeit
+{
+    color:gray;
+}
