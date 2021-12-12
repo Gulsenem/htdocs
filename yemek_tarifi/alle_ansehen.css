@@ -1,0 +1,10 @@
+.alle_ansehen
+{
+    padding: 80px 0;
+    text-align: center;
+    color:rgb(148, 147, 147);
+}
+.alle_ansehen h1
+{
+    color:var(--accent);
+}
