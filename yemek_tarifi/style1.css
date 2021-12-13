@@ -91,7 +91,22 @@ header nav a
 {
     margin-left: 10px;
 }
-
+header nav button
+{
+    outline:none;
+    background-color: var(--primary);
+    border-radius: 5px;
+    padding: 6px 12px;
+    margin-left: 20px;
+    border:1px solid rgb(68, 68, 68);
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0px 17px 17px 0px rgba(46, 46, 46, 0.2);
+}
+header nav button:hover
+{
+    box-shadow: 0px 17px 17px 0px rgb(22, 22, 22, 0.2);
+}
 /*/////////////// header input autocomplete////////////*/
 
 .results
@@ -132,7 +147,7 @@ header .results>div:hover
     background-size: cover;
 }
 /***********Sec_uberUns*************/
-.sec_uberUns{background-color: var(--secondary);}
+.sec_uberUns, .sec_text {background-color: var(--secondary);}
 .sec_uberUns .wrapper p
 {
     padding: 30px 0;

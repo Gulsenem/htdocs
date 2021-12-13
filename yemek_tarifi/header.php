@@ -7,7 +7,7 @@
     <title>Koch Rezepte</title>
 
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" href="alle_ansehen.css">
 </head>
@@ -26,10 +26,8 @@
                 <a href="index.php">Home</a>
                 <a href="#uberUns">Über uns</a>
                 <a href="#rezepte">Rezepte</a>
+                <button>LOGIN</button>
             </nav>
         </div>
     </header>
 
-    <?php
-        include("autocomplete.php");
-    ?>

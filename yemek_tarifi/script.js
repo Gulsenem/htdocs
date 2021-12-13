@@ -1,5 +1,48 @@
+// sec_text onmouseover & onmouseout
+let text = document.getElementById("gelb_section");
+function text1()
+{
+    text.innerHTML = "Eine gute Küche ist das Fundament allen Glücks"
+}
+
+function text2()
+{
+    text.innerHTML = "Selbstgebacken schmeckt am besten!"
+}
+
+
+
+
+
+
+// autocomplete
+
 let results = document.getElementById("results");
 
+
+
+
+function sorgu_yolla()
+{
+    fetch('autocomplete.php')
+    .then(function(cevap)
+    {
+       return cevap.json()
+    })
+    .then(function(cevapJson)
+    {
+        console.log(cevapJson);
+    })
+
+}
+
+
+var result = [];
+for(var i of cevapJson)
+  result.push([i, cevapJson[i]]);
+  console.log(result);
+
+/*
 let produktnamen  = 
 [
     "Tasche",
@@ -17,6 +60,7 @@ let produktnamen  =
     "tatata"
 
 ]
+*/
 
 function tip(el)
  {
@@ -30,7 +74,7 @@ function tip(el)
       
     let treffer= []; 
     
-    for(produkt of produktnamen)
+    for(produkt of sorgu_yolla())
     {
          if(produkt.toLowerCase().includes(s))
          {
