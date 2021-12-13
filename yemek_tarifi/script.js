@@ -36,10 +36,10 @@ function sorgu_yolla()
 
 }
 
-
+/*
 var result = [];
-for(var i of cevapJson)
-  result.push([i, cevapJson[i]]);
+for(var i of xxxxxx)
+  result.push([i, xxxxxx[i]]);
   console.log(result);
 
 /*

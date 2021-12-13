@@ -26,8 +26,8 @@
                 <a href="index.php">Home</a>
                 <a href="#uberUns">Über uns</a>
                 <a href="#rezepte">Rezepte</a>
-                <button>LOGIN</button>
+              <a href="loginPage.php"><button>LOGIN</button></a>  
             </nav>
         </div>
     </header>
-
+    <div> <a href="Autor">Autor</a></div>
