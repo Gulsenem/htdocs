@@ -42,6 +42,6 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="" alt="">
+<img src="resimgörme.php?id=3">
 </body>
 </html>

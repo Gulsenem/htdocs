@@ -31,7 +31,7 @@
         <input type="password" placeholder="passwort" name="passwort">
         <input type="text" placeholder="benutzername" name="username">
         
-        <input type="file" name="user_resmi">
+        <input type="file" name="user_img">
             
         <input type="submit" value="Registrieren">
         
