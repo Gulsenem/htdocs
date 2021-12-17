@@ -13,18 +13,28 @@ $passwort = $_POST["passwort"];
 
 include("verbinden.php");
 
-$anfrage        = "SELECT * FROM users WHERE email='" . $email .  "' AND passwort='" . $passwort . "';";
+$anfrage        = "SELECT * FROM users WHERE email='" . $email .  "';";
 $result         = $verbindung->query($anfrage);
 
-if($result->num_rows == 0)
+if($result->num_rows > 0)
 {
-    echo("sie haben sich nocht nicht registriert");
+    while($row = $result->fetch_assoc())
+    {
+        if(password_verify($passwort, $row["passwort"]))
+        {
+            $email = $row["email"];
+            setcookie("eingeloggt", "1", 0, "/");
+            header("Location: ../index.php");
+            exit();
+        }
+        else {
+            echo("passwort verify elsi" .$row["passwort"]);
+        }
+    }
 }
 else
 {
-    setcookie("eingeloggt", "1", 0, "/");
-    header("Location: ../index.php");
-    exit();
+    echo("birinji if.in elsi");
 }
 
 

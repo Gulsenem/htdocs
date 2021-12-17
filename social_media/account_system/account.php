@@ -1,11 +1,13 @@
 <?php
 
-$server_name = "localhost";
-$server_user = "root";
-$server_pass = "";
-$database_name = "socmed";
+$password = 123;
+$string = "mystring";
+$string_crypt = crypt($string, );
 
-$verbindung = new mysqli($server_name, $server_user, $server_pass, $database_name);
-
-
+echo($pass = password_hash($password, PASSWORD_DEFAULT));
+echo($string_crypt);
+if($pass_verify = password_verify($password, $pass))
+{
+    echo("PAssword verify" . $pass_verify);
+}
 ?>

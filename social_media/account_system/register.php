@@ -10,7 +10,7 @@
     $vorname    = $_POST["vorname"];
     $nachname   = $_POST["nachname"];
     $email      = $_POST["email"];
-    $passwort   = $_POST["passwort"];
+    $passwort   = password_hash($_POST["passwort"], PASSWORD_DEFAULT);
 
     include("verbinden.php");
 
@@ -19,8 +19,7 @@
     $result         = $verbindung->query($anfrage);
 
     if($result->num_rows > 0)
-    {
-        
+    {   
         exit("ungültig!");
     }
 
