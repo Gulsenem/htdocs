@@ -1,40 +1,54 @@
 <?php
 
-    if(empty($_POST["vorname"]) || empty($_POST["nachname"]) || empty($_POST["email"])
-     || empty($_POST["passwort"]) || empty($_POST["username"]) || empty($_FILES["user_img"]["tmp_name"]))
+    include("verbinden.php");
+
+    if(empty($_POST["vorname"]) || empty($_POST["nachname"]) || empty($_POST["geburstdatum"]) || empty($_POST["username"]) 
+     || empty($_POST["email"])  || empty($_POST["passwort"]) ||  empty($_FILES["userbild"]["tmp_name"]) || empty($_POST["user_content"])) 
     {
-        exit();
+        exit(json_encode(array(
+           "basarili" => "0" 
+        )));
     }
 
+    
     $vorname    = $_POST["vorname"];
     $nachname   = $_POST["nachname"];
-    $email      = $_POST["email"];
-    $geburstdatum = $_POST["geburstdatum"];
-    $passwort   = $_POST["passwort"];
+    $geburstdatum = date(Y-m-d,  strtotime($_POST["geburstdatum"]));
     $username   = $_POST["username"];
-    $user_img   = $_FILES["user_img"]["tmp_name"];
+    $email      = $_POST["email"];
+    $passwort   = $_POST["passwort"];    
+    $userBild   = $_FILES["userbild"]["tmp_name"];
+    $user_content   = $_POST["user_content"];
     
 
-    $server_name = "localhost";
-    $server_user = "root";
-    $server_pass = "";
-    $database_name = "test";
+    $anfrage = "SELECT * FROM users WHERE username='" . $username . "' OR email='" . $email . "'";
+    $result  = $verbindung->query($anfrage);
 
-    $verbindung = new mysqli($server_name, $server_user, $server_pass, $database_name);
+    if($result->num_rows > 0)
+    {
+        //nicht erfolgreich
+        exit(json_encode(array(
+            "basarili" => "0" 
+         )));
+    }
 
-    $anfrage = "INSERT INTO users1 ( vorname, nachname, email, geburstdatum, passwort, foto, username) VALUES ('" . $vorname . "','" . $nachname ."','".  $email  . "','" . $geburstdatum . "','" . $passwort . "','" .  $user_img .  "','" . $username . "');";
+
+    $anfrage = "INSERT INTO users ( vorname, nachname,  geburstdatum, username, email, passwort, userbild, user_content ) VALUES ('" . $vorname . "','" . $nachname ."','".  $geburstdatum  . "','" . $username . "','" . $email . "','" . $passwort . "','" .  $userBild .  "','" . $user_content . "');";
 
     if($verbindung->query($anfrage) === true)
     {
-        echo("erfolgreich");
-        setcookie("registriert", "1");
+        //Erfolgreich
+
     }
-    else{
-        echo("fehler");
+    else
+    {
+        exit(json_encode(array(
+            "basarili" => "0" 
+         )));
     }
     $verbindung->close();
 
-    if($_FILES)
+   /* if($_FILES)
     {
         
     $user_img =  $_FILES["user_img"]["tmp_name"];
@@ -48,40 +62,6 @@
     }
 
     }
-/*
-    if(empty($_POST["vorname"]) || empty($_POST["nachname"]) || 
-        empty($_POST["email"]) || empty($_POST["passwort"]) || empty($_POST["username"]))
-    {
-        exit();
-    }
-
-    $vorname    = $_POST["vorname"];
-    $nachname   = $_POST["nachname"];
-    $email      = $_POST["email"];
-    $geburstdatum = $_POST["geburstdatum"];
-    $passwort   = $_POST["passwort"];
-    $foto       = $_POST["foto"];
-    $username   = $_POST["username"];
-
-    $server_name = "localhost";
-    $server_user = "root";
-    $server_pass = "";
-    $database_name = "test";
-
-    $verbindung = new mysqli($server_name, $server_user, $server_pass, $database_name);
-
-    $anfrage = "INSERT INTO users1 ( vorname, nachname, email, geburstdatum, passwort, foto, username) VALUES ('" . $vorname . "','" . $nachname ."','".  $email  . "','" . $geburstdatum . "','" . $passwort . "','" .  $foto .  "','" . $username . "');";
-
-    if($verbindung->query($anfrage) === true)
-    {
-        echo("erfolgreich");
-        setcookie("registriert", "1");
-    }
-    else{
-        echo("fehler");
-    }
-    $verbindung->close();
 
     */
-
 ?>
