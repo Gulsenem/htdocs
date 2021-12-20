@@ -1,10 +1,15 @@
 <?php
-    $server_name = "localhost";
-    $server_user = "root";
-    $server_pass = "";
-    $database_name = "test";
+
+    include("verbinden.php");
+
     
-    $verbindung = new mysqli($server_name, $server_user, $server_pass, $database_name);
+    if(!isset($_COOKIE["eingeloggt"]))
+    {
+        include("loginPage.php");
+    }
+    else{
+
+    
 
 ?>
 
@@ -22,25 +27,13 @@
     <h3>Produkte: </h3>
 
     <div class="cards" style="display:flex;" >
-        <?php
-            $anfrage = "SELECT * FROM produkte  Where bestand>4";
-            $result   = $verbindung->query($anfrage);
-
-            while($row = $result->fetch_assoc())
-            {
-                ?>
-                    <div class="box" style="border: 1px solid black; padding: 10px 20px; margin: 10px;">
-                        <h3> <?= $row["name"] ?> </h3>
-                        <p><?= $row["content"] ?></p>
-                        <div>preis: <?= $row["preis"] ?> </div>
-                        <div>bestand: <?= $row["bestand"] ?> </div>
-                    </div>
-                <?php
-            }
-
-        ?>
+                    oifnböxkfdhbioöndfbhfidyoblkfnbfi
     </div>
 
 
 </body>
 </html>
+
+<?php
+    }
+?>

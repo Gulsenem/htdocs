@@ -31,18 +31,21 @@ if($sorgu == "POST")
 
         if($row["passwort"] == $passwort) // sifresi de dogru
         {
-            $token = $row["token"];
-            $query = "UPDATE users SET token = '" . $token . "' WHERE id = " . $row["id"];
+            $token = bin2hex(random_bytes(20)); // täze token generate edyas
+            $query = "UPDATE users SET token = '" . $token . "' WHERE id = " . $row["id"]; // onki tokene taze token beryas
+            
             $result2 = $verbindung->query($query);
 
             if($result2 === true)
             {
+                setcookie("eingeloggt", $token, time()+86400*30, "/" ); //önki cookien yerine taze cookie beryas
+
                 echo(json_encode(array(
                     "basarili"  => "1",
                     "isim"      => $row["vorname"],
                     "id"        => $row["id"],
-                    "token"     => $token
-                )));
+                    "token"     => $token 
+                ))); //home.page gelyar
             }
         }
         else
