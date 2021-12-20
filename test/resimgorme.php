@@ -6,8 +6,10 @@
     $database_name = "beispiel";
 
     $verbindung = new mysqli($server_name, $server_user, $server_pass, $database_name);
+    if(empty())
+    $resim = $_FILES["resim"]["tmp_name"];
+    $yeniad = $_FILES["dosya"]["name"];
 
-    
 
 
 ?>
@@ -21,8 +23,8 @@
 </head>
 <body>
     <form action="resimgorme.php" method="POST" enctype="multipart/form-data" > 
-            <input type="file" name="dosya"> <br> <br>
-            <input type="submit" name="dugme" value="yukle">
+            <input type="file" name="resim"> <br> <br>
+            <input type="submit" value="yukle">
     </form>
 </body>
 </html>

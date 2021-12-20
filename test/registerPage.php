@@ -22,13 +22,16 @@
 </head>
 <body>
     <h2>konto erstellen</h2>
-    <form action="test.php" method="POST" enctype="multipart/form-data">
+    <form action="register.php" method="POST" >
         <input type="text" placeholder="vorname" name="vorname">
         <input type="text" placeholder="nachname" name="nachname">
-        <input type="file" name="user_img">
-
-            
-        <input type="submit" value="test">
+        <input type="date" placeholder="geburstdatum" name="geburstdatum">
+        <input type="text" placeholder="username" name="username">
+        <input type="email" placeholder="email" name="email">
+        <input type="password" placeholder="passwort" name="passwort">
+        <input type="text" placeholder="content" name="user_content">
+  
+        <input type="submit" value="register">
         
     </form>
 

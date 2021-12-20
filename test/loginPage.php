@@ -9,10 +9,9 @@
 <body>
     
     <form method="POST" action="login.php">
-        <input type="text" placeholder="Vorname" name="vorname" required>
-        <input type="text" placeholder="Nachname" name="nachname" required>
+
         <input type="email" placeholder="Email" name="email" required>
-        <input type="password" placeholder="Passwort" name="pass" required>
+        <input type="password" placeholder="Passwort" name="passwort" required>
         <input type="submit" value="login">
     </form>
 </body>
