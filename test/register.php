@@ -43,7 +43,8 @@
         //Erfolgreich
         setcookie("eingeloggt", $token, time()+86400*30, "/" ); //loginPageden atlamak icin
         echo(json_encode(array(
-            "basarili"  => "1"
+            "basarili"  => "1",
+            "eingeloggt" => $token
         )));
 
     }

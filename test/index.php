@@ -3,14 +3,18 @@
     include("verbinden.php");
 
     
-    if(!isset($_COOKIE["eingeloggt"]))
+    if(!isset($_COOKIE["eingeloggt"] ))
     {
+
         include("loginPage.php");
     }
     else{
+        $cookie = $_COOKIE["eingeloggt"];
+        $anfrage = "SELECT * FROM users WHERE token='" . $cookie . "'";
+        $result  = $verbindung->query($anfrage);
 
-    
-
+        if($result->num_rows>0)
+        { 
 ?>
 
 
@@ -35,5 +39,10 @@
 </html>
 
 <?php
+        }
+        else
+        {
+            echo("cookieler gabat gelmedi logine iber");
+        }
     }
 ?>
