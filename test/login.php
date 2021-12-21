@@ -32,7 +32,7 @@ if($sorgu == "POST")
         if($row["passwort"] == $passwort) // sifresi de dogru
         {
             $token = bin2hex(random_bytes(20)); // täze token generate edyas
-            $query = "UPDATE users SET token = '" . $token . "' WHERE id = " . $row["id"]; // onki tokene taze token beryas
+            $query = "UPDATE users SET token='" . $token . "' WHERE id=" . $row["id"]; // onki tokene taze token beryas
             
             $result2 = $verbindung->query($query);
 
@@ -44,7 +44,7 @@ if($sorgu == "POST")
                     "basarili"  => "1",
                     "isim"      => $row["vorname"],
                     "id"        => $row["id"],
-                    "token"     => $token 
+                    "eingeloggt" => $token 
                 ))); //home.page gelyar
             }
         }
