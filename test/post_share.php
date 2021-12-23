@@ -6,104 +6,69 @@
 
     if($sorgu == "POST")
     { 
-        if(empty($_POST["post_content"])) //post yok bolsa basarisiz 
+        /*if(empty($_POST["post_content"]) || empty($_POST["token"]) || empty($_POST["tokenvalue"])) //post_content ve token yok bolsa basarisiz 
         {
             exit(json_encode(array(
                 "basarili"  => "0"
             )));
         }
-
-        $post_content = $_POST["post_content"];
-
-        $anfrage = "INSERT INTO posts (post_content) VALUES ('" . $post_content . "')";
-        if($verbindung->query($anfrage === true))
+        if(isset($_POST["token"])  )
         {
+            $tokenvalue = $_POST["tokenvalue"];
+            $anfrage = "SELECT * FROM users where token='" . $tokenvalue . "'"; 
+            $result = $verbindung->query($anfrage);
+
             exit(json_encode(array(
-                "basarili"  => "1"
+                "basarili"  => "1",
+                "test10" => $tokenvalue,
+                "uID"    => $result->fetch_assoc()["id"],
             )));
-        }
-        else{
+        }*/
+        if(empty($_POST["post_content"]) || empty($_POST["token"])) //post_content ve token yok bolsa basarisiz 
+        {
             exit(json_encode(array(
                 "basarili"  => "0"
             )));
         }
-        /*
-        $user_id = $_GET["user_id"];
-
-        if(!isset($_GET["token"]))
+        if(isset($_POST["token"]))
         {
-            exit(json_encode(array(
-                "basarili"  => "0"
-            )));
-            //exit('token bulunmadi gelmedi');
-        }
 
-        $token = $_GET["token"]
-        $anfrage = "SELECT * FROM users where token='" . $token ."'"; 
-        $result = $verbindung->query($anfrage);
-        if($result->num_rows>0)
-        {
-            exit(json_encode(array(
-                "basarili"  => "0"
-            )));  //echo("token tapylmady ya den gelyani yok");
-        }
-        else
-        {
-            $row = $result->fetch_assoc()["id"];
-            $user_id = $row;
-
-            $anfrage2 = "INSERT INTO posts ( post_content, 'user_id' ) VALUES ('" . $post_content . "' , '" . $user_id . "')";
-            if($verbindung->query($anfrage2 === true))
+            
+            $post_content = $_POST["post_content"];
+            $token = $_POST["token"];
+            
+            
+            
+            $anfrage = "SELECT * FROM users where token='" . $token ."'"; 
+            $result = $verbindung->query($anfrage);
+        
+            if($result->num_rows == 0)
             {
                 echo(json_encode(array(
                     "basarili"  => "0"
                 )));
             }
-            else{
-                echo(json_encode(array(
-                    "basarili"  => "0"
-                ))); //echo("else hata");
-            }
-            
+            else { 
+                
+                
+
+                $anfrage2 = "INSERT INTO posts (`post_content`, `user_id`) VALUES ('" . $post_content . "','" . $result->fetch_assoc()["id"] . "')";
+                if($verbindung->query($anfrage2)=== TRUE)
+                {
+                    echo(json_encode(array(
+                        "basarili"  => "1",
+
+                    )));
+                }
+                else{
+                    echo(json_encode(array(
+                        "basarili"  => "0"
+                    )));
+                }
+            }    
         }
+        
     }
-/*
-    $anfrage = "SELECT * FROM users where id='" . $user_id ."'"; 
-    $result = $verbindung->query($anfrage);
-
-    if($result->num_rows>0)
-    {
-        echo("id tapylmady");
-    }
-    else
-    {
-        $anfrage2 = "INSERT INTO posts (post_content) VALUES ('" . $post_content . "')";
-        if($verbindung->query($anfrage2 === true))
-        {
-            echo("basardin");
-        }
-        else{
-            echo("else hata");
-        }
-    }
-*/
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

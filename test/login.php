@@ -41,10 +41,14 @@ if($sorgu == "POST")
                 setcookie("eingeloggt", $token, time()+86400*30, "/" ); //önki cookien yerine taze cookie beryas
 
                 echo(json_encode(array(
-                    "basarili"  => "1",
-                    "isim"      => $row["vorname"],
-                    "id"        => $row["id"],
-                    "eingeloggt" => $token 
+                    "basarili"        => "1",
+                    "vorname"         => $row["vorname"],
+                    "nachname"        => $row["nachname"],
+                    "geurstag"        => $row["geburstdatum"],
+                    "username"        => $row["username"],
+                    "email"           => $row["email"],
+                    "user_content"    => $row["usercontent"],
+                    "joined"          => $row["user_kayitTarihi"],
                 ))); //home.page gelyar
             }
         }
