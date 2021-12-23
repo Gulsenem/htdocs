@@ -29,28 +29,25 @@ if($sorgu == "POST")
     {
         $row = $result->fetch_assoc();
 
+        
         if($row["passwort"] == $passwort) // sifresi de dogru
         {
-            $token = bin2hex(random_bytes(20)); // täze token generate edyas
-            $query = "UPDATE users SET token='" . $token . "' WHERE id=" . $row["id"]; // onki tokene taze token beryas
+            $token = $row["token"];//bin2hex(random_bytes(20)); // täze token generate edyas
+            //$query = "UPDATE users SET token='" . $token . "' WHERE id=" . $row["id"]; // onki tokene taze token beryas
             
-            $result2 = $verbindung->query($query);
+            //$result2 = $verbindung->query($query);
 
-            if($result2 === true)
-            {
+            //if($result2 === true)
+            //{
                 setcookie("eingeloggt", $token, time()+86400*30, "/" ); //önki cookien yerine taze cookie beryas
 
                 echo(json_encode(array(
-                    "basarili"        => "1",
-                    "vorname"         => $row["vorname"],
-                    "nachname"        => $row["nachname"],
-                    "geurstag"        => $row["geburstdatum"],
-                    "username"        => $row["username"],
-                    "email"           => $row["email"],
-                    "user_content"    => $row["usercontent"],
-                    "joined"          => $row["user_kayitTarihi"],
+                    "basarili"  => "1",
+                    "isim"      => $row["vorname"],
+                    "id"        => $row["id"],
+                    "eingeloggt"     => $token 
                 ))); //home.page gelyar
-            }
+            //}
         }
         else
         {
