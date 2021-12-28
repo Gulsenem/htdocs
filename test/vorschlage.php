@@ -33,9 +33,7 @@
                     $result4 = $verbindung->query($anfrage4);
                     $takipArray[] = $result4->fetch_assoc();
                     $abonameArray[] = $result31->fetch_assoc();
-                } 
-                //$takipArray[] = $result3->fetch_assoc();
-                
+                }                 
             }  
             //echo($userIDArray[0]);   /*
  
