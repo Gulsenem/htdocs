@@ -23,7 +23,6 @@
     {
         // Erfolgreich eingeloggt
         setcookie("eingeloggt", "1");
-        setcookie("name", $ergebnis->fetch_assoc()["vorname"]);
         header("Location: index.php");
         exit();
     }

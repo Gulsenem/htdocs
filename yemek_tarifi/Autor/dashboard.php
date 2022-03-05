@@ -1,8 +1,3 @@
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +7,7 @@
     <title>Koch Rezepte</title>
 
 
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="../style1.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" href="alle_ansehen.css">
 </head>
@@ -22,17 +17,10 @@
             <div class="logo"> 
                 <i class="far fa-hat-chef"></i>
                 Das Kochrezept </div>
-            <div class="such_feld">
-                <i class="far fa-search"></i>
-                <input type="text" placeholder="z.B 'Pasta' oder 'Kuchen'" oninput="tip(this)" >
-                <div class="results" id="results"></div>
-            </div>
             <nav>
-                <a href="index.php">Home</a>
-                <a href="#uberUns">Über uns</a>
-                <a href="#rezepte">Rezepte</a>
-              <a href="loginPage.php"><button>LOGIN</button></a>  
-              <a href="Autor/dashboard.php"><button >Daschboard</button></a> 
+                <a href="categoryPage.php">Kategorie</a>
+                <a href="new_post_page.php">Post </a>
+              <a href="../#"><button >zurück</button></a> 
             </nav>
         </div>
     </header>
